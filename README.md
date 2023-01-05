@@ -43,7 +43,7 @@ Rails と Vue.js を用いた SPA
 - Vuetify(ライブラリ/画面の装飾として使用)
 - vue-chartjs(ライブラリ/レーダーチャートを表示する為に使用)
 
-#実行手順
+# 実行手順
 
 ```bash
 $ git clone https://github.com/tomoaki198211/this_coffee_api.git
@@ -51,6 +51,8 @@ $ cd this_coffee_api
 $ rails db:create && rails db:migrate
 $ rails s
 ```
+
+フロントエンドに関しては開発中に動作確認後に追記
 
 # カタログ設計
 
