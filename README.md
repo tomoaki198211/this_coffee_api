@@ -56,11 +56,11 @@ $ rails s
 
 # カタログ設計
 
-[https://docs.google.com/spreadsheets/d/1doVEqBQa4o_UpcBmZ5tsXWE40SP6KND7jQxpvEGkHqM/edit?usp=sharing](https://docs.google.com/spreadsheets/d/1doVEqBQa4o_UpcBmZ5tsXWE40SP6KND7jQxpvEGkHqM/edit?usp=sharing)
+https://docs.google.com/spreadsheets/d/1doVEqBQa4o_UpcBmZ5tsXWE40SP6KND7jQxpvEGkHqM/edit?usp=sharing
 
 # テーブル定義書
 
-[https://docs.google.com/spreadsheets/d/1doVEqBQa4o_UpcBmZ5tsXWE40SP6KND7jQxpvEGkHqM/edit?usp=sharing](https://docs.google.com/spreadsheets/d/1doVEqBQa4o_UpcBmZ5tsXWE40SP6KND7jQxpvEGkHqM/edit?usp=sharing)
+https://docs.google.com/spreadsheets/d/1doVEqBQa4o_UpcBmZ5tsXWE40SP6KND7jQxpvEGkHqM/edit?usp=sharing
 
 # ワイヤーフレーム（PC）
 
