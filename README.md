@@ -72,8 +72,8 @@ https://docs.google.com/spreadsheets/d/1doVEqBQa4o_UpcBmZ5tsXWE40SP6KND7jQxpvEGk
 
 # ER 図
 
-![ER図](images/er.png)
+![ER図](images/er2.png)
 
 # 画面遷移図
 
-![ER図](images/seni.png)
+![ER図](images/seni2.png)
