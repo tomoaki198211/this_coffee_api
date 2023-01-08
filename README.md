@@ -72,7 +72,7 @@ https://docs.google.com/spreadsheets/d/1doVEqBQa4o_UpcBmZ5tsXWE40SP6KND7jQxpvEGk
 
 # ER 図
 
-![ER図](images/er2.png)
+![ER図](images/er.png)
 
 # 画面遷移図
 
