@@ -10,10 +10,67 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2023_01_11_131802) do
+ActiveRecord::Schema.define(version: 2023_01_12_072918) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
+
+  create_table "categories", force: :cascade do |t|
+    t.string "name", null: false
+    t.datetime "created_at"
+  end
+
+  create_table "coffee_properties", force: :cascade do |t|
+    t.string "name", null: false
+    t.string "size"
+    t.integer "price"
+    t.integer "capacity"
+    t.string "image"
+    t.bigint "store_id", null: false
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
+    t.index ["store_id"], name: "index_coffee_properties_on_store_id"
+  end
+
+  create_table "coffees", force: :cascade do |t|
+    t.bigint "coffee_property_id", null: false
+    t.bigint "category_id", null: false
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
+    t.index ["category_id"], name: "index_coffees_on_category_id"
+    t.index ["coffee_property_id"], name: "index_coffees_on_coffee_property_id"
+  end
+
+  create_table "favorites", force: :cascade do |t|
+    t.bigint "user_id", null: false
+    t.bigint "coffee_id", null: false
+    t.datetime "created_at"
+    t.index ["coffee_id"], name: "index_favorites_on_coffee_id"
+    t.index ["user_id"], name: "index_favorites_on_user_id"
+  end
+
+  create_table "reviews", force: :cascade do |t|
+    t.bigint "user_id", null: false
+    t.bigint "coffee_id", null: false
+    t.integer "intuition"
+    t.integer "efficiency"
+    t.integer "flavor"
+    t.integer "sweetness"
+    t.integer "rich"
+    t.integer "acidity"
+    t.integer "bitter"
+    t.text "remarks"
+    t.boolean "setting"
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
+    t.index ["coffee_id"], name: "index_reviews_on_coffee_id"
+    t.index ["user_id"], name: "index_reviews_on_user_id"
+  end
+
+  create_table "stores", force: :cascade do |t|
+    t.string "name", null: false
+    t.datetime "created_at"
+  end
 
   create_table "users", force: :cascade do |t|
     t.string "provider", default: "email", null: false
@@ -46,4 +103,11 @@ ActiveRecord::Schema.define(version: 2023_01_11_131802) do
     t.index ["uid", "provider"], name: "index_users_on_uid_and_provider", unique: true
   end
 
+  add_foreign_key "coffee_properties", "stores"
+  add_foreign_key "coffees", "categories"
+  add_foreign_key "coffees", "coffee_properties"
+  add_foreign_key "favorites", "coffees"
+  add_foreign_key "favorites", "users"
+  add_foreign_key "reviews", "coffees"
+  add_foreign_key "reviews", "users"
 end
