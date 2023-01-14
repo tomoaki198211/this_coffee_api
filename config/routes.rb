@@ -5,6 +5,9 @@ Rails.application.routes.draw do
         registrations: 'api/v1/auth/registrations',
         sessions: 'api/v1/auth/sessions'
       }
+      scope format: 'json' do # json形式のリクエストに対応
+        resources :reviews
+      end
     end
   end
 end
