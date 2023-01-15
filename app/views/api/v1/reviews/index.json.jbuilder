@@ -21,4 +21,8 @@ json.array! @reviews do |review|
       end
   end
 
+  #userモデル
+  json.user do
+    json.partial! "api/v1/reviews/user", user: review.user
+  end
 end
