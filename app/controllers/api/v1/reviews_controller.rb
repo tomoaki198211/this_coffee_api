@@ -1,7 +1,7 @@
 class Api::V1::ReviewsController < ApplicationController
 
   def index
-    @reviews = Review.where(user_id: current_user).includes(:user, coffee: [{coffee_property: :store}, :category, :favorites] )
+    @reviews = Review.where(user_id: current_api_v1_user.id).includes(:user, coffee: [{coffee_property: :store}, :category, :favorites] )
     # @reviews = Review.where(user_id: 23)
   end
 
