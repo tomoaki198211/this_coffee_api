@@ -13,6 +13,9 @@ Rails.application.routes.draw do
           collection do
             get 'mdata'
           end
+          collection do
+            post 'search'
+          end
         end
       end
     end
