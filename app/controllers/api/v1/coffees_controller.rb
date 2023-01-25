@@ -4,6 +4,10 @@ class Api::V1::CoffeesController < ApplicationController
     @coffees = Coffee.includes(:category,coffee_property: :store).order('id DESC').limit(10)
   end
 
+  def show
+    set_coffee
+  end
+
   def mdata
     @categories = Category.all
     @stores = Store.all
@@ -23,7 +27,11 @@ class Api::V1::CoffeesController < ApplicationController
 
   private
 
-  def set_search_params
-    @search = params.require(:search).permit(:word,:category,:store)
-  end
+    def set_coffee
+      @coffee = Coffee.find(params[:id])
+    end
+
+    def set_search_params
+      @search = params.require(:search).permit(:word,:category,:store)
+    end
 end
