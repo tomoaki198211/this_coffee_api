@@ -34,4 +34,5 @@ class Api::V1::CoffeesController < ApplicationController
     def set_search_params
       @search = params.require(:search).permit(:word,:category,:store)
     end
+
 end
