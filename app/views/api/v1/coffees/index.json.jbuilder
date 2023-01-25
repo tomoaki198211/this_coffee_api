@@ -5,7 +5,7 @@ json.array! @coffees do |coffee|
   :coffee_property_id,
   :category_id,
   :created_at,
-  :updated_at,
+  :updated_at
 
     #コーヒープロパティモデル（子）
     json.coffee_property do
@@ -16,7 +16,6 @@ json.array! @coffees do |coffee|
         json.partial! "api/v1/reviews/store", store: coffee.store
       end
     end
-  end
 
   #userモデル
   json.category do
