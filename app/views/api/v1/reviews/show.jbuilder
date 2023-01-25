@@ -25,5 +25,4 @@ json.review do
   json.user do
     json.partial! "api/v1/reviews/user", user: @review.user
   end
-
 end

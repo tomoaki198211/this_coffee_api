@@ -8,6 +8,9 @@ Rails.application.routes.draw do
       scope format: 'json' do # json形式のリクエストに対応
         resources :reviews
       end
+      scope format: 'json' do # json形式のリクエストに対応
+        resources :coffees
+      end
     end
   end
 end

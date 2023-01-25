@@ -3,4 +3,5 @@ class Coffee < ApplicationRecord
   belongs_to :category
   has_many :reviews
   has_many :favorites
+  delegate :store, to: :coffee_property
 end

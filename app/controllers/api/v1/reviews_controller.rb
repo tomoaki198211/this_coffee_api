@@ -20,7 +20,8 @@ class Api::V1::ReviewsController < ApplicationController
   def show
     set_review
     # response_success(:review, :show)
-    render :show, status: :ok
+    # render :show, status: :ok
+    # render json: @review, include: [:user]
   end
 
   def edit
