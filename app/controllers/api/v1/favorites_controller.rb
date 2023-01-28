@@ -20,8 +20,4 @@ class Api::V1::FavoritesController < ApplicationController
     params.require(:favorite).permit(:coffee_id)
   end
 
-  def favorite_params_id
-    params.require(:favorite).permit(:id)
-  end
-
 end
