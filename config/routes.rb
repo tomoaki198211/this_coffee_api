@@ -7,8 +7,6 @@ Rails.application.routes.draw do
       }
       scope format: 'json' do # json形式のリクエストに対応
         resources :reviews
-      end
-      scope format: 'json' do # json形式のリクエストに対応
         resources :coffees do
           collection do
             get 'mdata'
@@ -16,6 +14,7 @@ Rails.application.routes.draw do
           collection do
             post 'search'
           end
+          resources :favorites, only: %w(create destroy index)
         end
       end
     end

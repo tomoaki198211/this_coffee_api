@@ -16,4 +16,5 @@ json.array! @coffees do |coffee|
   json.category do
     json.partial! "api/v1/format/category", category: coffee.category
   end
+
 end
