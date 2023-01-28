@@ -5,6 +5,18 @@ Rails.application.routes.draw do
         registrations: 'api/v1/auth/registrations',
         sessions: 'api/v1/auth/sessions'
       }
+      scope format: 'json' do # json形式のリクエストに対応
+        resources :reviews
+        resources :coffees do
+          collection do
+            get 'mdata'
+          end
+          collection do
+            post 'search'
+          end
+          resources :favorites, only: %w(create destroy index)
+        end
+      end
     end
   end
 end
