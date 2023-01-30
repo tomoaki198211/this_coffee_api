@@ -10,7 +10,10 @@ class Api::V1::ReviewsController < ApplicationController
 
   def create
     @review = Review.new(review_params)
-    @review.save!
+    if @review.save!
+      head :created
+    else
+    end
     # render :index, status: :ok
   end
 
@@ -33,7 +36,8 @@ class Api::V1::ReviewsController < ApplicationController
 
   def destroy
     set_review
-
+    @review.destroy!
+    head :ok
   end
 
   private
