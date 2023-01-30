@@ -20,6 +20,11 @@ Rails.application.routes.draw do
       devise_scope :api_v1_user do
         post 'auth/guest_sign_in', to: 'auth/sessions#guest_sign_in'
         post 'auth/guest_admin_sign_in', to: 'auth/sessions#guest_admin_sign_in'
+        scope format: 'json' do
+          namespace :admin do
+            resources :users
+          end
+        end
       end
     end
   end

@@ -1,2 +1,5 @@
 json.extract! user,
-:name
+:name,
+:email,
+:admin
+
