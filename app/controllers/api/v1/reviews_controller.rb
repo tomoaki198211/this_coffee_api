@@ -50,7 +50,7 @@ class Api::V1::ReviewsController < ApplicationController
                           .search_store(@search[:store])
                           .search_word(@search[:word])
     end
-    @reviews ||= @reviews = Review.includes(:user,coffee: [{coffee_property: :store}, :category, :favorites]).order('id DESC').limit(10)
+    @reviews ||= @reviews = Review.includes(:user,coffee: [{coffee_property: :store}, :category, :favorites]).limit(10)
     render :index
   end
 
