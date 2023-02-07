@@ -29,7 +29,9 @@ class Api::V1::ReviewsController < ApplicationController
   end
 
   def update
-    if @review.update(review_params)
+    set_review
+    if @review.update!(review_params)
+      head :created
     else
     end
   end
@@ -40,7 +42,23 @@ class Api::V1::ReviewsController < ApplicationController
     head :ok
   end
 
+  def search
+    set_search_params
+    unless @search[:word].blank? && @search[:category].blank? && @search[:store].blank?
+      @reviews = Review.includes(coffee: [{coffee_property: :store}, :category, :favorites])
+                          .search_category(@search[:category])
+                          .search_store(@search[:store])
+                          .search_word(@search[:word])
+    end
+    @reviews ||= @reviews = Review.includes(:user,coffee: [{coffee_property: :store}, :category, :favorites]).limit(10)
+    render :index
+  end
+
   private
+
+    def set_search_params
+      @search = params.require(:search).permit(:word,:category,:store)
+    end
 
     def set_review
       @review = Review.find(params[:id])
