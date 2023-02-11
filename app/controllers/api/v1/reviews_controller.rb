@@ -42,6 +42,11 @@ class Api::V1::ReviewsController < ApplicationController
     head :ok
   end
 
+  def all
+    @reviews = Review.includes(:user, coffee: [{coffee_property: :store}, :category, :favorites] )
+    render :index
+  end
+
   def search
     set_search_params
     unless @search[:word].blank? && @search[:category].blank? && @search[:store].blank?

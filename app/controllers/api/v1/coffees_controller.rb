@@ -1,7 +1,7 @@
 class Api::V1::CoffeesController < ApplicationController
 
   def index
-    @coffees = Coffee.includes(:category,coffee_property: :store).order('id DESC').limit(10)
+    @coffees = Coffee.includes(:category,coffee_property: :store).order('id DESC')
   end
 
   def show

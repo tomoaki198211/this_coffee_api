@@ -10,6 +10,9 @@ Rails.application.routes.draw do
           collection do
             post 'search'
           end
+          collection do
+            get 'all'
+          end
         end
         resources :coffees do
           collection do
