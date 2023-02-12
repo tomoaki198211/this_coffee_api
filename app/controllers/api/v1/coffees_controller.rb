@@ -25,7 +25,17 @@ class Api::V1::CoffeesController < ApplicationController
     render :index
   end
 
+  def update
+    @coffee_agg = CoffeeAggregation.new(coffee_aggrigation_params)
+    @coffee_agg.update
+  end
+
   private
+
+    def coffee_aggrigation_params
+      params.require(:coffee).permit(:coffee_id, :store_id, :category_id,
+                                     :property_id, :coffee_name, :size, :price, :note)
+    end
 
     def set_coffee
       @coffee = Coffee.find(params[:id])

@@ -4,6 +4,6 @@ json.extract! coffee_property,
 :name,
 :size,
 :price,
-:register_id,
+:register_code,
 :note,
 :image
