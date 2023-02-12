@@ -8,6 +8,20 @@ class Api::V1::CoffeesController < ApplicationController
     set_coffee
   end
 
+  def create
+    coffee_agg = CoffeeAggregation.new(coffee_aggrigation_params)
+    if coffee_agg.save
+      head :ok
+    else
+      head :bad_request
+    end
+  end
+
+  def destroy
+    set_coffee
+    @coffee.destroy!
+  end
+
   def mdata
     @categories = Category.all
     @stores = Store.all
@@ -26,8 +40,12 @@ class Api::V1::CoffeesController < ApplicationController
   end
 
   def update
-    @coffee_agg = CoffeeAggregation.new(coffee_aggrigation_params)
-    @coffee_agg.update
+    coffee_agg = CoffeeAggregation.new(coffee_aggrigation_params)
+    if coffee_agg.update
+      head :ok
+    else
+      head :bad_request
+    end
   end
 
   private
