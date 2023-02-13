@@ -4,13 +4,22 @@ class Api::V1::CoffeesController < ApplicationController
     @coffees = Coffee.includes(:category,coffee_property: :store).order('id DESC')
   end
 
+  def create
+    coffee_agg = CoffeeAggregation.new(coffee_aggrigation_params)
+    if coffee_agg.save
+      head :ok
+    else
+      head :bad_request
+    end
+  end
+
   def show
     set_coffee
   end
 
-  def create
+  def update
     coffee_agg = CoffeeAggregation.new(coffee_aggrigation_params)
-    if coffee_agg.save
+    if coffee_agg.update
       head :ok
     else
       head :bad_request
@@ -22,7 +31,7 @@ class Api::V1::CoffeesController < ApplicationController
     @coffee.destroy!
   end
 
-  def mdata
+  def option
     @categories = Category.all
     @stores = Store.all
   end
@@ -37,15 +46,6 @@ class Api::V1::CoffeesController < ApplicationController
     end
     @coffees ||= @coffees = Coffee.includes(:category,coffee_property: :store).order('id DESC').limit(10)
     render :index
-  end
-
-  def update
-    coffee_agg = CoffeeAggregation.new(coffee_aggrigation_params)
-    if coffee_agg.update
-      head :ok
-    else
-      head :bad_request
-    end
   end
 
   private

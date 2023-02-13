@@ -1,12 +1,8 @@
 class Api::V1::Admin::UsersController < ApplicationController
-  # before_action :only_admin
+  before_action :only_admin
 
   def index
     @users = User.all
-  end
-
-  def new
-    @user = User.new
   end
 
   def create
@@ -25,14 +21,9 @@ class Api::V1::Admin::UsersController < ApplicationController
     else
       head :bad_request
     end
-
   end
 
   def show
-    set_user
-  end
-
-  def edit
     set_user
   end
 

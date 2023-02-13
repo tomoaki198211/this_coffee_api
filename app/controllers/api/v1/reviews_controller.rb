@@ -4,27 +4,16 @@ class Api::V1::ReviewsController < ApplicationController
     @reviews = Review.where(user_id: current_api_v1_user.id).includes(:user, coffee: [{coffee_property: :store}, :category, :favorites] )
   end
 
-  def new
-    @review = Review.new
-  end
-
   def create
     @review = Review.new(review_params)
     if @review.save!
       head :created
     else
+      head :bad_request
     end
-    # render :index, status: :ok
   end
 
   def show
-    set_review
-    # response_success(:review, :show)
-    # render :show, status: :ok
-    # render json: @review, include: [:user]
-  end
-
-  def edit
     set_review
   end
 
@@ -33,6 +22,7 @@ class Api::V1::ReviewsController < ApplicationController
     if @review.update!(review_params)
       head :created
     else
+      head :bad_request
     end
   end
 
