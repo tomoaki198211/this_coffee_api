@@ -1,4 +1,5 @@
 class Api::V1::ReviewsController < ApplicationController
+  before_action :authenticate_api_v1_user!, only: %w(create update destroy)
 
   def index
     @reviews = Review.where(user_id: current_api_v1_user.id).includes(:user, coffee: [{coffee_property: :store}, :category, :favorites] )

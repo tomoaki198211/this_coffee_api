@@ -1,5 +1,5 @@
 class Api::V1::CoffeesController < ApplicationController
-
+  before_action :authenticate_api_v1_user!, only: %w(create update destroy)
   def index
     @coffees = Coffee.includes(:category,coffee_property: :store).order('id DESC')
   end
