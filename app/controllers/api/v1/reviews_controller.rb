@@ -2,8 +2,7 @@ class Api::V1::ReviewsController < ApplicationController
   before_action :authenticate_api_v1_user!, only: %w(create update destroy)
 
   def index
-    @reviews = Review.where(user_id: current_api_v1_user.id).preload(:user, coffee: [{coffee_property: :store}, :category, :favorites] )
-    # render json :@reviews.to_json
+    @reviews = Review.where(user_id: current_api_v1_user.id).preload(:user, coffee: [{coffee_property: :store}, :category, :favorites] ).limit(200)
   end
 
   def create
@@ -35,14 +34,14 @@ class Api::V1::ReviewsController < ApplicationController
   end
 
   def all
-    @reviews = Review.where(setting: true).includes(:user, coffee: [{coffee_property: :store}, :category, :favorites] )
+    @reviews = Review.where(setting: true).includes(:user, coffee: [{coffee_property: :store}, :category, :favorites] ).limit(200)
     render :index
   end
 
   def search
     set_search_params
     unless @search[:word].blank? && @search[:category].blank? && @search[:store].blank?
-      @reviews = Review.includes(coffee: [{coffee_property: :store}, :category, :favorites])
+      @reviews = Review.includes(:user, coffee: [{coffee_property: :store}, :category, :favorites])
                           .search_category(@search[:category])
                           .search_store(@search[:store])
                           .search_word(@search[:word])
