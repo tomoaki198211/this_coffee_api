@@ -16,6 +16,7 @@ Rails.application.routes.draw do
         resources :coffees, only: %w(index create show update destroy) do
           collection do
             get 'option'
+            get 'likes'
             post 'search'
           end
           resources :favorites, only: %w(create destroy index)

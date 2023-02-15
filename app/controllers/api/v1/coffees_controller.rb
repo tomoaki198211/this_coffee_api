@@ -48,6 +48,10 @@ class Api::V1::CoffeesController < ApplicationController
     render :index
   end
 
+  def likes
+    @coffees = current_api_v1_user.coffees.includes(:user, :favorite)
+  end
+
   private
 
     def coffee_aggrigation_params

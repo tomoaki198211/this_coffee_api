@@ -2,7 +2,8 @@ class Api::V1::ReviewsController < ApplicationController
   before_action :authenticate_api_v1_user!, only: %w(create update destroy)
 
   def index
-    @reviews = Review.where(user_id: current_api_v1_user.id).includes(:user, coffee: [{coffee_property: :store}, :category, :favorites] )
+    @reviews = Review.where(user_id: current_api_v1_user.id).preload(:user, coffee: [{coffee_property: :store}, :category, :favorites] )
+    # render json :@reviews.to_json
   end
 
   def create
@@ -34,7 +35,7 @@ class Api::V1::ReviewsController < ApplicationController
   end
 
   def all
-    @reviews = Review.includes(:user, coffee: [{coffee_property: :store}, :category, :favorites] )
+    @reviews = Review.where(setting: true).includes(:user, coffee: [{coffee_property: :store}, :category, :favorites] )
     render :index
   end
 

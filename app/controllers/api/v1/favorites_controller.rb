@@ -2,7 +2,7 @@ class Api::V1::FavoritesController < ApplicationController
   before_action :authenticate_api_v1_user!, only: %w(create destroy)
 
   def index
-    @favorites = Favorite.filter_by_coffee(params[:coffee_id])
+    @favorites = Favorite.filter_by_coffee(params[:coffee_id]).includes(:user, :coffee)
   end
 
   def create
