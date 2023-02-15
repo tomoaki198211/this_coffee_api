@@ -1,8 +1,8 @@
 class Coffee < ApplicationRecord
   belongs_to :coffee_property ,dependent: :destroy
   belongs_to :category
-  has_many :reviews
-  has_many :favorites
+  has_many :reviews,dependent: :destroy
+  has_many :favorites,dependent: :destroy
   delegate :store, to: :coffee_property
 
   scope :search_word, -> (word) do

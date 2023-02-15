@@ -49,7 +49,8 @@ class Api::V1::CoffeesController < ApplicationController
   end
 
   def likes
-    @coffees = current_api_v1_user.coffees.includes(:user, :favorite)
+    @coffees = current_api_v1_user.coffees.includes(:category,coffee_property: :store)
+    render :index
   end
 
   private
