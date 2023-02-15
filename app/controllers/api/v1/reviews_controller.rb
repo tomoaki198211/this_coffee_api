@@ -44,9 +44,9 @@ class Api::V1::ReviewsController < ApplicationController
       @reviews = Review.includes(:user, coffee: [{coffee_property: :store}, :category, :favorites])
                           .search_category(@search[:category])
                           .search_store(@search[:store])
-                          .search_word(@search[:word])
+                          .search_word(@search[:word]).limit(200)
     end
-    @reviews ||= @reviews = Review.includes(:user,coffee: [{coffee_property: :store}, :category, :favorites]).limit(10)
+    @reviews ||= @reviews = Review.includes(:user,coffee: [{coffee_property: :store}, :category, :favorites]).limit(200)
     render :index
   end
 
