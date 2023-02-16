@@ -1,14 +1,37 @@
 class Api::V1::CoffeesController < ApplicationController
-
+  before_action :authenticate_api_v1_user!, only: %w(create update destroy)
   def index
     @coffees = Coffee.includes(:category,coffee_property: :store).order('id DESC')
+  end
+
+  def create
+    coffee_agg = CoffeeAggregation.new(coffee_aggrigation_params)
+    if coffee_agg.save
+      head :ok
+    else
+      head :bad_request
+    end
   end
 
   def show
     set_coffee
   end
 
-  def mdata
+  def update
+    coffee_agg = CoffeeAggregation.new(coffee_aggrigation_params)
+    if coffee_agg.update
+      head :ok
+    else
+      head :bad_request
+    end
+  end
+
+  def destroy
+    set_coffee
+    @coffee.destroy!
+  end
+
+  def option
     @categories = Category.all
     @stores = Store.all
   end
@@ -25,7 +48,17 @@ class Api::V1::CoffeesController < ApplicationController
     render :index
   end
 
+  def likes
+    @coffees = current_api_v1_user.coffees.includes(:category,coffee_property: :store)
+    render :index
+  end
+
   private
+
+    def coffee_aggrigation_params
+      params.require(:coffee).permit(:coffee_id, :store_id, :category_id,
+                                     :property_id, :coffee_name, :size, :price, :note)
+    end
 
     def set_coffee
       @coffee = Coffee.find(params[:id])

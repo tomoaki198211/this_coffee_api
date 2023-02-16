@@ -1,11 +1,8 @@
 class Api::V1::ReviewsController < ApplicationController
+  before_action :authenticate_api_v1_user!, only: %w(create update destroy)
 
   def index
-    @reviews = Review.where(user_id: current_api_v1_user.id).includes(:user, coffee: [{coffee_property: :store}, :category, :favorites] )
-  end
-
-  def new
-    @review = Review.new
+    @reviews = Review.where(user_id: current_api_v1_user.id).preload(:user, coffee: [{coffee_property: :store}, :category, :favorites] ).limit(200)
   end
 
   def create
@@ -13,18 +10,11 @@ class Api::V1::ReviewsController < ApplicationController
     if @review.save!
       head :created
     else
+      head :bad_request
     end
-    # render :index, status: :ok
   end
 
   def show
-    set_review
-    # response_success(:review, :show)
-    # render :show, status: :ok
-    # render json: @review, include: [:user]
-  end
-
-  def edit
     set_review
   end
 
@@ -33,6 +23,7 @@ class Api::V1::ReviewsController < ApplicationController
     if @review.update!(review_params)
       head :created
     else
+      head :bad_request
     end
   end
 
@@ -43,19 +34,19 @@ class Api::V1::ReviewsController < ApplicationController
   end
 
   def all
-    @reviews = Review.includes(:user, coffee: [{coffee_property: :store}, :category, :favorites] )
+    @reviews = Review.where(setting: true).includes(:user, coffee: [{coffee_property: :store}, :category, :favorites] ).limit(200)
     render :index
   end
 
   def search
     set_search_params
     unless @search[:word].blank? && @search[:category].blank? && @search[:store].blank?
-      @reviews = Review.includes(coffee: [{coffee_property: :store}, :category, :favorites])
+      @reviews = Review.includes(:user, coffee: [{coffee_property: :store}, :category, :favorites])
                           .search_category(@search[:category])
                           .search_store(@search[:store])
-                          .search_word(@search[:word])
+                          .search_word(@search[:word]).limit(200)
     end
-    @reviews ||= @reviews = Review.includes(:user,coffee: [{coffee_property: :store}, :category, :favorites]).limit(10)
+    @reviews ||= @reviews = Review.includes(:user,coffee: [{coffee_property: :store}, :category, :favorites]).limit(200)
     render :index
   end
 

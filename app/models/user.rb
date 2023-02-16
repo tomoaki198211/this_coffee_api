@@ -1,8 +1,9 @@
 # frozen_string_literal: true
 
 class User < ActiveRecord::Base
-  has_many :reviews
-  has_many :favorites
+  has_many :reviews, dependent: :destroy
+  has_many :favorites, dependent: :destroy
+  has_many :coffees, through: :favorites
   # before_create :admin_not_create
   # before_update :admin_not_update
   devise :database_authenticatable, :registerable,

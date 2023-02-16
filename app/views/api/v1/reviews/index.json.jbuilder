@@ -1,28 +1,57 @@
-##reviewモデル(親)
 json.array! @reviews do |review|
-  json.partial! "api/v1/format/review", review: review
+  json.extract! review,
+    :id,
+    :user_id,
+    :coffee_id,
+    :intuition,
+    :efficiency,
+    :flavor,
+    :sweetness,
+    :rich,
+    :acidity,
+    :bitter,
+    :remarks,
+    :setting,
+    :created_at,
+    :updated_at
 
 ##コーヒーモデル（子）
   json.coffee do
-    json.partial! "api/v1/format/coffee", coffee: review.coffee
+    json.extract! review.coffee,
+      :id,
+      :coffee_property_id,
+      :category_id
 
       json.category do
-        json.partial! "api/v1/format/category", category: review.category
+        json.extract! review.category,
+          :id,
+          :name
       end
 
       #コーヒープロパティモデル（孫）
       json.coffee_property do
-        json.partial! "api/v1/format/coffee_property", coffee_property: review.coffee_property
+        json.extract! review.coffee_property,
+          :id,
+          :store_id,
+          :name,
+          :size,
+          :price,
+          :register_code,
+          :image
 
         #店モデル（ひ孫）
         json.store do
-          json.partial! "api/v1/format/store", store: review.store
+          json.extract! review.store,
+            :id,
+            :name
         end
       end
   end
-
-  #userモデル
   json.user do
-    json.partial! "api/v1/format/user", user: review.user
+    json.extract! review.user,
+      :id,
+      :name,
+      :email,
+      :admin
   end
 end

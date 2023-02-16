@@ -1,12 +1,9 @@
 class Api::V1::Admin::UsersController < ApplicationController
-  # before_action :only_admin
+  before_action :only_admin, only: %w(create update destroy)
+  # before_action :authenticate_api_v1_user!, only: %w(create update destroy)
 
   def index
     @users = User.all
-  end
-
-  def new
-    @user = User.new
   end
 
   def create
@@ -25,14 +22,9 @@ class Api::V1::Admin::UsersController < ApplicationController
     else
       head :bad_request
     end
-
   end
 
   def show
-    set_user
-  end
-
-  def edit
     set_user
   end
 
@@ -53,13 +45,13 @@ class Api::V1::Admin::UsersController < ApplicationController
   end
 
   def user_params
-    params.require(:user).permit(:name, :email, :password, :password_digest, :admin)
+    params.require(:user).permit(:name, :email, :password)
   end
 
-
+#only_admin,authenticatedが効かない2/16
   def only_admin
-    unless current_api_v1_user.admin == true
-      head :unauthorized
-    end
+    # unless current_api_v1_user.admin == true
+    #   head :unauthorized
+    # end
   end
 end
