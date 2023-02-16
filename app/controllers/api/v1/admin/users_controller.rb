@@ -48,7 +48,7 @@ class Api::V1::Admin::UsersController < ApplicationController
     params.require(:user).permit(:name, :email, :password)
   end
 
-
+#only_admin,authenticatedが効かない2/16
   def only_admin
     # unless current_api_v1_user.admin == true
     #   head :unauthorized
