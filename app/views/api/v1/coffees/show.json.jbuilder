@@ -17,3 +17,13 @@ json.coffee do
     json.partial! "api/v1/format/category", category: @coffee.category
   end
 end
+json.count @count
+json.favorites @favorites
+json.intuition @intuition
+json.efficiency @efficiency
+json.flavor @flavor
+json.sweetness @sweetness
+json.rich @rich
+json.acidity @acidity
+json.bitter @bitter
+
