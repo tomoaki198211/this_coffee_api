@@ -7,8 +7,21 @@
 #   "4" => "ベンティ"
 # }
 
-# Category.create(
+#カテゴリー作成
+# Category.create!(
+#   {id: 1, name: "コーヒー(カフェ)"},
+#   {id: 2, name: "コーヒー,COLD(カフェ)"},
+#   {id: 3, name: "エスプレッソ(カフェ)"},
+#   {id: 4, name: "ラテ(カフェ)"},
+#   {id: 5, name: "フラペチーノ(カフェ)"},
+#   {id: 6, name: "ティー(カフェ)"},
+#   {id: 7, name: "その他(カフェ)"},
+#   {id: 8, name: "コーヒー豆"},
+#   {id: 9, name: "インスタントコーヒー"},
+#   {id: 10, name: "缶"},
+#   {id: 11, name: "その他"},
 # )
+#
 
 # # スターバックス用json読み込みからコーヒープロパティ生成-----------
 # coffees = ActiveSupport::JSON.decode(File.read(Rails.root.join('db', 'index.json')))
@@ -32,24 +45,24 @@
 
 
 # レビューの生成------------------
-users = User.all
-users = users.map{|user|user.id}
-coffees = Coffee.all
-coffees = coffees.map{|coffee|coffee.id}
+# users = User.all
+# users = users.map{|user|user.id}
+# coffees = Coffee.all
+# coffees = coffees.map{|coffee|coffee.id}
 
-10000.times{|n|
-  Review.create!(
-    user_id: users.sample,
-    coffee_id: coffees.sample,
-    intuition: rand(1..5),
-    efficiency: rand(1..5),
-    flavor: rand(1..5),
-    sweetness: rand(1..5),
-    rich: rand(1..5),
-    acidity: rand(1..5),
-    bitter: rand(1..5),
-    setting: true,
-    remarks: "これはサンプルで作成"
-  )
-}
+# 10000.times{|n|
+#   Review.create!(
+#     user_id: users.sample,
+#     coffee_id: coffees.sample,
+#     intuition: rand(1..5),
+#     efficiency: rand(1..5),
+#     flavor: rand(1..5),
+#     sweetness: rand(1..5),
+#     rich: rand(1..5),
+#     acidity: rand(1..5),
+#     bitter: rand(1..5),
+#     setting: true,
+#     remarks: "これはサンプルで作成しました"
+#   )
+# }
 # レビューの生成------------------
