@@ -11,18 +11,21 @@ RUN apt-get update \
     vim \
     && apt-get clean \
     && rm -rf /var/lib/apt/lists/*
+    RUN curl -fsSL https://deb.nodesource.com/setup_16.x | bash - && apt-get install -y nodejs
 RUN npm install --global yarn
 # 作業用のディレクトリを作成(存在しない場合は勝手に作成してくれる)
-WORKDIR /myapp
+WORKDIR /api
+
+#既存railsプロジェクトをコンテナ内にコピー
+COPY . /api
 
 # ホストのGemfile達をコンテナ内にコピー
-COPY Gemfile /myapp/Gemfile
-COPY Gemfile.lock /myapp/Gemfile.lock
+# COPY Gemfile /api/Gemfile
+# COPY Gemfile.lock /api/Gemfile.lock
 RUN bundle config set force_ruby_platform true
 RUN gem install bundler
 RUN bundle install
-#既存railsプロジェクトをコンテナ内にコピー
-COPY . /myapp
+
 
 # entrypoint.shをコピーし、実行権限を与える
 COPY entrypoint.sh /usr/bin/
