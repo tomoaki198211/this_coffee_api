@@ -15,6 +15,7 @@ class Api::V1::CoffeesController < ApplicationController
 
   def show
     set_coffee
+    get_review_info
   end
 
   def update
@@ -54,6 +55,31 @@ class Api::V1::CoffeesController < ApplicationController
   end
 
   private
+
+    def review_avg_calc(array)
+      array.sum.fdiv(array.length)
+    end
+
+    def get_review_info
+      @reviews = @coffee.reviews
+      intuition = @reviews.where("intuition > ?",0).pluck(:intuition)
+      efficiency = @reviews.where("efficiency > ?",0).pluck(:efficiency)
+      flavor = @reviews.where("flavor > ?",0).pluck(:flavor)
+      sweetness = @reviews.where("sweetness > ?",0).pluck(:flavor)
+      rich = @reviews.where("rich > ?",0).pluck(:flavor)
+      acidity = @reviews.where("acidity > ?",0).pluck(:flavor)
+      bitter = @reviews.where("bitter > ?",0).pluck(:flavor)
+
+      @count = @coffee.reviews.length
+      @favorites = @coffee.favorites.length
+      @intuition = review_avg_calc(intuition)
+      @efficiency = review_avg_calc(efficiency)
+      @flavor = review_avg_calc(flavor)
+      @sweetness = review_avg_calc(sweetness)
+      @rich = review_avg_calc(rich)
+      @acidity = review_avg_calc(acidity)
+      @bitter = review_avg_calc(bitter)
+    end
 
     def coffee_aggrigation_params
       params.require(:coffee).permit(:coffee_id, :store_id, :category_id,
