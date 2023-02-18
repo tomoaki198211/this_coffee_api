@@ -6,11 +6,12 @@ RUN apt-get update \
     && apt-get install -y --no-install-recommends \
     # `build-essential`は開発に必須のビルドツールを提供しているパッケージ
     build-essential \
-    mariadb-client \
+    postgresql-client \
     nodejs \
     vim \
     && apt-get clean \
     && rm -rf /var/lib/apt/lists/*
+RUN npm install --global yarn
 # 作業用のディレクトリを作成(存在しない場合は勝手に作成してくれる)
 WORKDIR /myapp
 
