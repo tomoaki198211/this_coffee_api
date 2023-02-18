@@ -9,12 +9,12 @@ services:
     # platform: linux/x86_64
     env_file: .env
     ports:
-      - '5433:5432'
+      - '5432:5432'
   api:
     # 作成済みのDockerfileを元にコンテナを作成
     build: .
     # command: bundle exec puma -C config/puma.rb
-    command: bundle exec puma -C config/puma.rb -e production
+    # command: bundle exec puma -C config/puma.rb -e production
     volumes:
       - .:/api
       - gem_data:/usr/local/bundle
