@@ -9,7 +9,7 @@ services:
     # platform: linux/x86_64
     env_file: .env
     ports:
-      - '5433:5432'
+      - '5432:5432'
   api:
     # 作成済みのDockerfileを元にコンテナを作成
     build: .
