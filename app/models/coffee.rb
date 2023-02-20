@@ -6,6 +6,9 @@ class Coffee < ApplicationRecord
   has_many :users, through: :favorites
   delegate :store, to: :coffee_property
 
+  validates :category_id, presence: true
+  validates :coffee_property_id, presence: true
+
   scope :search_word, -> (word) do
     next if word.blank?
     references(:coffee_properties).where('coffee_properties.name LIKE?', "%#{word}%")
