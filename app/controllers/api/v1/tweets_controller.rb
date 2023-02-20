@@ -1,4 +1,5 @@
 class Api::V1::TweetsController < ApplicationController
+  before_action :authenticate_api_v1_user!
   require 'json'
   require 'typhoeus'
 

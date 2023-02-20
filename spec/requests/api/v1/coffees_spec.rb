@@ -59,7 +59,7 @@ RSpec.describe "Api::V1::Coffees", type: :request do
     let!(:coffee){FactoryBot.create(:coffee)}
     let!(:user){ FactoryBot.create(:user) }
 
-    it "コーヒーの情報を更新出来る" do
+    it "コーヒーの情報を削除出来る" do
       auth_tokens = sign_in(user)
       params = {
         coffee: {
