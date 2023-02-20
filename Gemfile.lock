@@ -80,6 +80,7 @@ GEM
       bcrypt (~> 3.0)
       devise (> 3.5.2, < 5)
       rails (>= 4.2.0, < 7.1)
+    diff-lcs (1.5.0)
     dotenv (2.8.1)
     dotenv-rails (2.8.1)
       dotenv (= 2.8.1)
@@ -87,6 +88,11 @@ GEM
     erubi (1.12.0)
     ethon (0.16.0)
       ffi (>= 1.15.0)
+    factory_bot (6.2.1)
+      activesupport (>= 5.0.0)
+    factory_bot_rails (6.2.0)
+      factory_bot (~> 6.2.0)
+      railties (>= 5.0.0)
     ffi (1.15.5)
     globalid (1.0.0)
       activesupport (>= 5.0)
@@ -173,6 +179,23 @@ GEM
     responders (3.0.1)
       actionpack (>= 5.0)
       railties (>= 5.0)
+    rspec-core (3.12.0)
+      rspec-support (~> 3.12.0)
+    rspec-expectations (3.12.0)
+      diff-lcs (>= 1.2.0, < 2.0)
+      rspec-support (~> 3.12.0)
+    rspec-mocks (3.12.0)
+      diff-lcs (>= 1.2.0, < 2.0)
+      rspec-support (~> 3.12.0)
+    rspec-rails (6.0.1)
+      actionpack (>= 6.1)
+      activesupport (>= 6.1)
+      railties (>= 6.1)
+      rspec-core (~> 3.11)
+      rspec-expectations (~> 3.11)
+      rspec-mocks (~> 3.11)
+      rspec-support (~> 3.11)
+    rspec-support (3.12.0)
     spring (4.1.0)
     sprockets (4.2.0)
       concurrent-ruby (~> 1.0)
@@ -205,6 +228,7 @@ DEPENDENCIES
   devise-i18n
   devise_token_auth
   dotenv-rails
+  factory_bot_rails
   jbuilder
   listen (~> 3.3)
   pg (~> 1.1)
@@ -212,6 +236,7 @@ DEPENDENCIES
   rack-cors
   rails (~> 6.1.7)
   rails-i18n
+  rspec-rails
   spring
   typhoeus
   tzinfo-data
