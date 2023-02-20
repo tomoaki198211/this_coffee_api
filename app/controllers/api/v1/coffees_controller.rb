@@ -30,6 +30,7 @@ class Api::V1::CoffeesController < ApplicationController
   def destroy
     set_coffee
     @coffee.destroy!
+    head :ok
   end
 
   def option
@@ -45,7 +46,7 @@ class Api::V1::CoffeesController < ApplicationController
                           .search_store(@search[:store])
                           .search_word(@search[:word])
     end
-    @coffees ||= @coffees = Coffee.includes(:category,coffee_property: :store).order('id DESC').limit(10)
+    @coffees ||= @coffees = Coffee.includes(:category,coffee_property: :store).order('id DESC')
     render :index
   end
 

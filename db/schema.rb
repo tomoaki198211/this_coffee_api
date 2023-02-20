@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2023_02_12_031410) do
+ActiveRecord::Schema.define(version: 2023_02_20_153445) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -53,15 +53,15 @@ ActiveRecord::Schema.define(version: 2023_02_12_031410) do
   create_table "reviews", force: :cascade do |t|
     t.bigint "user_id", null: false
     t.bigint "coffee_id", null: false
-    t.integer "intuition"
-    t.integer "efficiency"
+    t.integer "intuition", null: false
+    t.integer "efficiency", null: false
     t.integer "flavor"
     t.integer "sweetness"
     t.integer "rich"
     t.integer "acidity"
     t.integer "bitter"
-    t.text "remarks"
-    t.boolean "setting"
+    t.text "remarks", null: false
+    t.boolean "setting", default: false, null: false
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
     t.index ["coffee_id"], name: "index_reviews_on_coffee_id"

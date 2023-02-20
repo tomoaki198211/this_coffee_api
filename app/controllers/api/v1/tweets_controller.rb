@@ -1,4 +1,5 @@
 class Api::V1::TweetsController < ApplicationController
+  before_action :authenticate_api_v1_user!
   require 'json'
   require 'typhoeus'
 
@@ -21,7 +22,6 @@ class Api::V1::TweetsController < ApplicationController
       # "poll.fields": "options"
     }
     @response = get_tweet_counts(search_url, bearer_token, query_params)
-    # puts @response.code, JSON.pretty_generate(JSON.parse(@response.body))
     render json: @response['data']
   end
 

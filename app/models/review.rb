@@ -6,6 +6,10 @@ class Review < ApplicationRecord
   delegate :category, to: :coffee
   delegate :store, to: :coffee_property
 
+  validates :intuition, :efficiency, presence: true
+  validates :setting, inclusion: [true, false]
+  validates :remarks, presence: true, length: {maximum: 80}
+
   scope :search_word, -> (word) do
     next if word.blank?
     references(:coffee_properties).where('coffee_properties.name LIKE?', "%#{word}%")

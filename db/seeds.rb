@@ -12,13 +12,13 @@ users = [
   {email: "user2@example.com", password: "password", name: "user2"},
 ]
 
-users.each do |user|
-  User.create!(
-    email: user[:email],
-    password: user[:password],
-    name: user[:name]
-  )
-end
+# users.each do |user|
+#   User.create!(
+#     email: user[:email],
+#     password: user[:password],
+#     name: user[:name]
+#   )
+# end
 
 categories = [{id: 1, name: "コーヒー(カフェ)"},
 {id: 2, name: "コーヒー,COLD(カフェ)"},
