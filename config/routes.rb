@@ -21,6 +21,7 @@ Rails.application.routes.draw do
           end
           resources :favorites, only: %w(create destroy index)
         end
+        post 'tweets/search', to: 'tweets#search'
       end
 
       devise_scope :api_v1_user do
