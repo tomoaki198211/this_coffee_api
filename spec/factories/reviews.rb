@@ -1,4 +1,4 @@
 FactoryBot.define do
-  factory :favorite do
+  factory :review do
   end
 end

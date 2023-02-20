@@ -8,7 +8,6 @@ RSpec.describe "Api::V1::Favorites", type: :request do
     let!(:coffee_property){FactoryBot.create(:coffee_property)}
     let!(:coffee){FactoryBot.create(:coffee)}
     let!(:user){ FactoryBot.create(:user) }
-
     it "コーヒーに基づくお気に入りを返す" do
       get api_v1_coffee_favorites_path(coffee.id)
       expect(response).to have_http_status(200)
@@ -21,7 +20,6 @@ RSpec.describe "Api::V1::Favorites", type: :request do
     let!(:coffee_property){FactoryBot.create(:coffee_property)}
     let!(:coffee){FactoryBot.create(:coffee)}
     let!(:user){ FactoryBot.create(:user) }
-
     it "ユーザーが対象のコーヒーにお気に入りを出来る" do
       auth_tokens = sign_in(user)
       params={
@@ -41,7 +39,6 @@ RSpec.describe "Api::V1::Favorites", type: :request do
     let!(:coffee){FactoryBot.create(:coffee)}
     let!(:user){ FactoryBot.create(:user) }
     let!(:favorite){FactoryBot.create(:favorite, user: user, coffee: coffee)}
-
     it "ユーザーが対象のコーヒーにお気に入りを解除出来る" do
       auth_tokens = sign_in(user)
       delete api_v1_coffee_favorite_path(coffee.id,favorite.id), headers: auth_tokens
