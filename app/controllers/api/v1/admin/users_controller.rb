@@ -1,6 +1,5 @@
 class Api::V1::Admin::UsersController < ApplicationController
-  before_action :only_admin, only: %w(create update destroy)
-  # before_action :authenticate_api_v1_user!, only: %w(create update destroy)
+  before_action :only_admin
 
   def index
     @users = User.all
@@ -48,10 +47,9 @@ class Api::V1::Admin::UsersController < ApplicationController
     params.require(:user).permit(:name, :email, :password)
   end
 
-#only_admin,authenticatedが効かない2/16
   def only_admin
-    # unless current_api_v1_user.admin == true
-    #   head :unauthorized
-    # end
+    unless current_api_v1_user.admin == true
+      head :unauthorized
+    end
   end
 end

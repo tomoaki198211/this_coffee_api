@@ -20,6 +20,7 @@ class Api::V1::ReviewsController < ApplicationController
 
   def update
     set_review
+    return unless @review.user_id == current_api_v1_user.id
     if @review.update!(review_params)
       head :created
     else
@@ -29,6 +30,7 @@ class Api::V1::ReviewsController < ApplicationController
 
   def destroy
     set_review
+    return unless @review.user_id == current_api_v1_user.id
     @review.destroy!
     head :ok
   end

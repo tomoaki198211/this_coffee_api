@@ -1,5 +1,7 @@
 class Api::V1::CoffeesController < ApplicationController
   before_action :authenticate_api_v1_user!, only: %w(create update destroy)
+  before_action :only_admin, only: %w(create update destroy)
+
   def index
     @coffees = Coffee.includes(:category,coffee_property: :store).order('id DESC')
   end
@@ -95,4 +97,9 @@ class Api::V1::CoffeesController < ApplicationController
       @search = params.require(:search).permit(:word,:category,:store)
     end
 
+    def only_admin
+      unless current_api_v1_user.admin == true
+        head :unauthorized
+      end
+    end
 end
