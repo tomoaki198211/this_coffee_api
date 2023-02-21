@@ -95,4 +95,17 @@ RSpec.describe "Api::V1::Reviews", type: :request do
       expect(response).to have_http_status :ok
     end
   end
+
+  describe "POST /api/v1/reviews/preference" do
+    it "ユーザーは指定した好みの属性の評価５のレビューを返す事が出来る" do
+      auth_tokens = sign_in(user)
+      params = {
+        review: {
+          preference: 1,
+        }
+      }
+      post preference_api_v1_reviews_path, params: params, headers: auth_tokens
+      expect(response).to have_http_status :ok
+    end
+  end
 end
