@@ -12,16 +12,16 @@ users = [
   {email: "user2@example.com", password: "password", name: "user2"},
 ]
 
-# users.each do |user|
-#   User.create!(
-#     email: user[:email],
-#     password: user[:password],
-#     name: user[:name]
-#   )
-# end
+users.each do |user|
+  User.create!(
+    email: user[:email],
+    password: user[:password],
+    name: user[:name]
+  )
+end
 
 categories = [{id: 1, name: "コーヒー(カフェ)"},
-{id: 2, name: "コーヒー,COLD(カフェ)"},
+{id: 2, name: "コーヒーコールド(カフェ)"},
 {id: 3, name: "エスプレッソ(カフェ)"},
 {id: 4, name: "ラテ(カフェ)"},
 {id: 5, name: "フラペチーノ(カフェ)"},
@@ -51,7 +51,7 @@ coffees = ActiveSupport::JSON.decode(File.read(Rails.root.join('db', 'index.json
 coffees.each do |coffee|
   CoffeeProperty.find_or_create_by(register_code: coffee["product_code"]) do |cp|
     cp.store_id = 1
-    cp.name = coffee["product_name"]
+    cp.name = coffee["product_name"].gsub(/&\w*;/,'')
     cp.price = coffee["price"]
     cp.image = coffee["image1"]
     cp.size = size_starbucks[coffee["size"]]
