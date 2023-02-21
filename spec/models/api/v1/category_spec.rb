@@ -17,7 +17,7 @@ RSpec.describe 'カテゴリーモデル機能', type: :model do
     end
 
     context 'カテゴリーのnameが入力されている場合' do
-      it 'カテゴリー登録失敗する' do
+      it 'カテゴリー登録成功する' do
         category = Category.create(name: 'ココア')
         expect(category).to be_valid
       end

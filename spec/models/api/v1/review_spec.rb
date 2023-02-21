@@ -5,26 +5,34 @@ RSpec.describe 'レビューモデル機能', type: :model do
     let!(:user){ FactoryBot.create(:user)}
     let!(:coffee){FactoryBot.create(:coffee)}
 
-    context 'レビューのintuitionが空文字の場合' do
+    context 'レビューのintuitionがない場合' do
       it 'レビュー登録失敗する' do
-        review = Review.create(intuition: '', efficiency: 2, remarks: 'そこそこ', setting: true, user_id: user.id, coffee_id: coffee.id)
+        review = Review.create(intuition: nil, efficiency: 2, remarks: 'そこそこ', setting: true, user_id: user.id, coffee_id: coffee.id)
         expect(review).not_to be_valid
       end
     end
 
-    context 'レビューのefficiencyが空文字の場合' do
+    context 'レビューのefficiencyがない場合' do
       it 'レビュー登録失敗する' do
-        review = Review.create(intuition: 1, efficiency: '', remarks: 'そこそこ', setting: true, user_id: user.id, coffee_id: coffee.id)
+        review = Review.create(intuition: 1, efficiency: nil, remarks: 'そこそこ', setting: true, user_id: user.id, coffee_id: coffee.id)
         expect(review).not_to be_valid
       end
     end
 
-    context 'レビューのremarksが空文字の場合' do
+    context 'レビューのremarksがない場合' do
       it 'レビュー登録失敗する' do
-        review = Review.create(intuition: 1, efficiency: 1, remarks: '', setting: true, user_id: user.id, coffee_id: coffee.id)
+        review = Review.create(intuition: 1, efficiency: 1, remarks: nil, setting: true, user_id: user.id, coffee_id: coffee.id)
         expect(review).not_to be_valid
       end
     end
+
+    context 'レビューのremarksが81文字以上の場合' do
+      it 'レビュー登録失敗する' do
+        review = Review.create(intuition: 1, efficiency: 1, remarks: 'aaaaaaaaaabbbbbbbbbbaaaaaaaaaabbbbbbbbbbaaaaaaaaaabbbbbbbbbbaaaaaaaaaabbbbbbbbbbaaaaaaaaaabbbbbbbbbb', setting: true, user_id: user.id, coffee_id: coffee.id)
+        expect(review).not_to be_valid
+      end
+    end
+
 
     context 'レビューのintuition,efficiency,remarksが入力されている場合' do
       it 'レビュー登録成功する' do
