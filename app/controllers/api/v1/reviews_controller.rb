@@ -1,5 +1,5 @@
 class Api::V1::ReviewsController < ApplicationController
-  before_action :authenticate_api_v1_user!, only: %w(create update destroy)
+  before_action :authenticate_api_v1_user!, only: %w(create update destroy, preference)
 
   def index
     @reviews = Review.where(user_id: current_api_v1_user.id).preload(:user, coffee: [{coffee_property: :store}, :category, :favorites] ).limit(200)
@@ -20,8 +20,9 @@ class Api::V1::ReviewsController < ApplicationController
 
   def update
     set_review
+    return unless @review.user_id == current_api_v1_user.id
     if @review.update!(review_params)
-      head :created
+      head :ok
     else
       head :bad_request
     end
@@ -29,6 +30,7 @@ class Api::V1::ReviewsController < ApplicationController
 
   def destroy
     set_review
+    return unless @review.user_id == current_api_v1_user.id
     @review.destroy!
     head :ok
   end
@@ -50,6 +52,12 @@ class Api::V1::ReviewsController < ApplicationController
     render :index
   end
 
+  def preference
+    reviews = Review.preload(:user, coffee: [{coffee_property: :store}, :category, :favorites] ).order('created_at DESC').limit(100)
+    @reviews= reviews.preference_extract(preference_params[:preference]).limit(5)
+    render :index
+  end
+
   private
 
     def set_search_params
@@ -62,5 +70,9 @@ class Api::V1::ReviewsController < ApplicationController
 
     def review_params
       params.require(:review).permit(:coffee_id, :intuition, :efficiency, :flavor, :sweetness, :rich, :acidity, :bitter, :remarks, :setting).merge(user_id: current_api_v1_user.id)
+    end
+
+    def preference_params
+      params.require(:review).permit(:preference)
     end
 end

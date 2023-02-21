@@ -1,5 +1,7 @@
 class Api::V1::CoffeesController < ApplicationController
   before_action :authenticate_api_v1_user!, only: %w(create update destroy)
+  before_action :only_admin, only: %w(create update destroy)
+
   def index
     @coffees = Coffee.includes(:category,coffee_property: :store).order('id DESC')
   end
@@ -58,28 +60,21 @@ class Api::V1::CoffeesController < ApplicationController
   private
 
     def review_avg_calc(array)
+      return if array.empty?
       array.sum.fdiv(array.length)
     end
 
     def get_review_info
-      @reviews = @coffee.reviews
-      intuition = @reviews.where("intuition > ?",0).pluck(:intuition)
-      efficiency = @reviews.where("efficiency > ?",0).pluck(:efficiency)
-      flavor = @reviews.where("flavor > ?",0).pluck(:flavor)
-      sweetness = @reviews.where("sweetness > ?",0).pluck(:flavor)
-      rich = @reviews.where("rich > ?",0).pluck(:flavor)
-      acidity = @reviews.where("acidity > ?",0).pluck(:flavor)
-      bitter = @reviews.where("bitter > ?",0).pluck(:flavor)
-
+      reviews = @coffee.reviews
       @count = @coffee.reviews.length
       @favorites = @coffee.favorites.length
-      @intuition = review_avg_calc(intuition)
-      @efficiency = review_avg_calc(efficiency)
-      @flavor = review_avg_calc(flavor)
-      @sweetness = review_avg_calc(sweetness)
-      @rich = review_avg_calc(rich)
-      @acidity = review_avg_calc(acidity)
-      @bitter = review_avg_calc(bitter)
+      @intuition = review_avg_calc(reviews.intuition_extract)
+      @efficiency = review_avg_calc(reviews.efficiency_extract)
+      @flavor = review_avg_calc(reviews.flavor_extract)
+      @sweetness = review_avg_calc(reviews.sweetness_extract)
+      @rich = review_avg_calc(reviews.rich_extract)
+      @acidity = review_avg_calc(reviews.acidity_extract)
+      @bitter = review_avg_calc(reviews.bitter_extract)
     end
 
     def coffee_aggrigation_params
@@ -95,4 +90,9 @@ class Api::V1::CoffeesController < ApplicationController
       @search = params.require(:search).permit(:word,:category,:store)
     end
 
+    def only_admin
+      unless current_api_v1_user.admin == true
+        head :unauthorized
+      end
+    end
 end

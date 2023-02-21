@@ -10,18 +10,21 @@ size_starbucks = {
 users = [
   {email: "user1@example.com", password: "password",name: "user1"},
   {email: "user2@example.com", password: "password", name: "user2"},
+  {email: "user3@example.com", password: "password", name: "user3"},
+  {email: "user4@example.com", password: "password", name: "user4"},
+  {email: "user5@example.com", password: "password", name: "user5"},
 ]
 
-# users.each do |user|
-#   User.create!(
-#     email: user[:email],
-#     password: user[:password],
-#     name: user[:name]
-#   )
-# end
+users.each do |user|
+  User.create!(
+    email: user[:email],
+    password: user[:password],
+    name: user[:name]
+  )
+end
 
 categories = [{id: 1, name: "コーヒー(カフェ)"},
-{id: 2, name: "コーヒー,COLD(カフェ)"},
+{id: 2, name: "コーヒーコールド(カフェ)"},
 {id: 3, name: "エスプレッソ(カフェ)"},
 {id: 4, name: "ラテ(カフェ)"},
 {id: 5, name: "フラペチーノ(カフェ)"},
@@ -33,9 +36,40 @@ categories = [{id: 1, name: "コーヒー(カフェ)"},
 {id: 11, name: "その他"}
 ]
 
-Store.create!(
-  id:1, name:"スターバックス"
-)
+stores = [{id: 1, name: "スターバックスコーヒー"},
+  {id: 2, name: "ドトールコーヒー"},
+  {id: 3, name: "タリーズコーヒー"},
+  {id: 4, name: "コメダ珈琲店"},
+  {id: 5, name: "星乃珈琲店"},
+  {id: 6, name: "サンマルクカフェ"},
+  {id: 7, name: "上島珈琲店"},
+  {id: 8, name: "エクセルシオールカフェ"},
+  {id: 9, name: "カフェ・ベローチェ"},
+  {id: 10, name: "珈琲館"},
+  {id: 11, name: "プロント"},
+  {id: 12, name: "倉式珈琲店"},
+  {id: 13, name: "ホノルルコーヒー"},
+  {id: 14, name: "ディーン・アンド・デルーカ"},
+  {id: 15, name: "猿田彦珈琲"},
+  {id: 16, name: "ベックスコーヒー"},
+  {id: 17, name: "高倉珈琲"},
+  {id: 18, name: "グリーンベリーズコーヒー"},
+  {id: 19, name: "イリーカフェ"},
+  {id: 20, name: "ブルーボトルコーヒー"},
+  {id: 21, name: "カルディコーヒー"},
+  {id: 22, name: "ローソン"},
+  {id: 23, name: "ファミリーマート"},
+  {id: 24, name: "セブンイレブン"},
+  {id: 25, name: "その他"},
+  ]
+
+# ストア作成
+stores.each do |store|
+  Store.create!(
+    id: store[:id],
+    name: store[:name]
+  )
+end
 
 # カテゴリー作成
 categories.each do |category|
@@ -51,7 +85,7 @@ coffees = ActiveSupport::JSON.decode(File.read(Rails.root.join('db', 'index.json
 coffees.each do |coffee|
   CoffeeProperty.find_or_create_by(register_code: coffee["product_code"]) do |cp|
     cp.store_id = 1
-    cp.name = coffee["product_name"]
+    cp.name = coffee["product_name"].gsub(/&\w*;/,'')
     cp.price = coffee["price"]
     cp.image = coffee["image1"]
     cp.size = size_starbucks[coffee["size"]]
