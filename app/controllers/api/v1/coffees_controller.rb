@@ -60,6 +60,7 @@ class Api::V1::CoffeesController < ApplicationController
   private
 
     def review_avg_calc(array)
+      return if array.empty?
       array.sum.fdiv(array.length)
     end
 

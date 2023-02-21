@@ -64,7 +64,7 @@ RSpec.describe "Api::V1::Reviews", type: :request do
         }
     }
       put api_v1_review_path(review.id), params: params, headers: auth_tokens
-      expect(response).to have_http_status :created
+      expect(response).to have_http_status :ok
     end
   end
 
