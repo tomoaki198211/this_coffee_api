@@ -11,7 +11,7 @@ RSpec.describe "Api::V1::Coffees", type: :request do
   describe "GET /api/v1/coffees" do
     it "コーヒーマスタを全件取得出来る" do
       get api_v1_coffees_path
-      expect(response).to have_http_status(200)
+      expect(response).to have_http_status :ok
     end
   end
 

@@ -11,7 +11,7 @@ RSpec.describe "Api::V1::Reviews", type: :request do
     it "ユーザーが投稿したレビュー一覧が取得出来る" do
       auth_tokens = sign_in(user)
       get api_v1_reviews_path,headers: auth_tokens
-      expect(response).to have_http_status(200)
+      expect(response).to have_http_status :ok
     end
   end
 
@@ -33,7 +33,7 @@ RSpec.describe "Api::V1::Reviews", type: :request do
           }
       }
       post api_v1_reviews_path, params: params, headers: auth_tokens
-      expect(response).to have_http_status(201)
+      expect(response).to have_http_status :created
     end
   end
 
@@ -41,7 +41,7 @@ RSpec.describe "Api::V1::Reviews", type: :request do
     let!(:review){ FactoryBot.create(:review,user: user, coffee: coffee)}
     it "ユーザーがレビューを表示出来る" do
       get api_v1_review_path(review.id)
-      expect(response).to have_http_status(200)
+      expect(response).to have_http_status :ok
     end
   end
 
@@ -64,7 +64,7 @@ RSpec.describe "Api::V1::Reviews", type: :request do
         }
     }
       put api_v1_review_path(review.id), params: params, headers: auth_tokens
-      expect(response).to have_http_status(201)
+      expect(response).to have_http_status :created
     end
   end
 
@@ -73,14 +73,14 @@ RSpec.describe "Api::V1::Reviews", type: :request do
     it "ユーザーがレビューを削除出来る" do
       auth_tokens = sign_in(user)
       delete api_v1_review_path(review.id), headers: auth_tokens
-      expect(response).to have_http_status(200)
+      expect(response).to have_http_status :ok
     end
   end
 
   describe "GET /api/v1/reviews/all" do
     it "全件レビューを表示する" do
       get all_api_v1_reviews_path
-      expect(response).to have_http_status(200)
+      expect(response).to have_http_status :ok
     end
   end
 
@@ -92,7 +92,7 @@ RSpec.describe "Api::V1::Reviews", type: :request do
         }
       }
       post search_api_v1_reviews_path, params: params
-      expect(response).to have_http_status(200)
+      expect(response).to have_http_status :ok
     end
   end
 end
