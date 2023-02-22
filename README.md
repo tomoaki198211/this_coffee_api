@@ -23,7 +23,7 @@
 
 # インフラ図
 
-![インフラ構成図](images/infra.png)
+![インフラ構成図](images/infra2.png)
 
 # 使用技術
 
