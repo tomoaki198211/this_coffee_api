@@ -8,7 +8,7 @@
 Rails.application.config.middleware.insert_before 0, Rack::Cors do
   allow do
     #ドメインを指定する
-    origins 'https://this-coffee.net/'
+    origins 'http://this-coffee.net/'
     resource '*',
       headers: :any,
       expose: %w[access-token expiry token-type uid client],
