@@ -11,15 +11,17 @@
 - Ruby 3.0.1
 - Ruby on Rails 6.1.7
 
-フロントエンド
+フロントエンド(https://github.com/tomoaki198211/this_coffee_front)
 
 - Typescript 4.9.4
 - Vue.js 3.2.45
 
 # インフラ
 
-- AWS EC2(バックエンド)
-- AWS S3(フロントエンド・画像)
+- AWS(EC2/S3/Route53/CloudFront)
+- docker
+- docker-compose
+- Nginx/puma
 
 # インフラ図
 
@@ -31,22 +33,32 @@ Rails と Vue.js を用いた SPA
 
 バックエンド
 
+Ruby on Rails
+
 - devise（gem/ログインで使用）
-- devise_token_auth（gem/ログインをトークンで使用）
+- devise_token_auth（gem/認証処理をトークンで使用）
 - rack-cors(gem/クロスオリジンで使用)
-- Twitter API V2(API/投稿取得で使用)
+- typoeus(gem/リクエスト処理/Twitter API V2 による投稿取得で使用))
 
 フロントエンド
+
+Vue.js
 
 - Vue router(ライブラリ/フロントエンドのルーティングに使用)
 - pinia(ライブラリ/データのストアとして使用)
 - Vuetify(ライブラリ/画面の装飾として使用)
 - vue-chartjs(ライブラリ/レーダーチャートを表示する為に使用)
 
+#テスト
+
+- RSpec
+
 # 実行手順
 
 ```bash
 $ git clone https://github.com/tomoaki198211/this_coffee_api.git
+$ bundle install
+$ yarn install
 $ cd this_coffee_api
 $ rails db:create && rails db:migrate
 $ rails s
