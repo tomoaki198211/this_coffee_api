@@ -43,17 +43,17 @@ class Api::V1::ReviewsController < ApplicationController
   def search
     set_search_params
     unless @search[:word].blank? && @search[:category].blank? && @search[:store].blank?
-      @reviews = Review.includes(:user, coffee: [{coffee_property: :store}, :category, :favorites])
+      @reviews = Review.where(setting: true).includes(:user, coffee: [{coffee_property: :store}, :category, :favorites])
                           .search_category(@search[:category])
                           .search_store(@search[:store])
                           .search_word(@search[:word]).order('reviews.created_at DESC').limit(200)
     end
-    @reviews ||= @reviews = Review.includes(:user,coffee: [{coffee_property: :store}, :category, :favorites]).limit(200)
+    @reviews ||= @reviews = Review.where(setting: true).includes(:user,coffee: [{coffee_property: :store}, :category, :favorites]).limit(200)
     render :index
   end
 
   def preference
-    reviews = Review.preload(:user, coffee: [{coffee_property: :store}, :category, :favorites] ).order('created_at DESC').limit(100)
+    reviews = Review.where(setting: true).preload(:user, coffee: [{coffee_property: :store}, :category, :favorites] ).order('created_at DESC').limit(100)
     @reviews= reviews.preference_extract(preference_params[:preference]).limit(5)
     render :index
   end
