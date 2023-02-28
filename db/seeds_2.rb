@@ -1,5 +1,12 @@
 require 'json'
 
+size_starbucks = {
+  "1" =>"ショート",
+  "2" => "トール",
+  "3" => "グランデ",
+  "4" => "ベンティ"
+}
+
 users = [
   {email: "user1@example.com", password: "password",name: "user1"},
   {email: "user2@example.com", password: "password", name: "user2"},
@@ -16,20 +23,17 @@ users.each do |user|
   )
 end
 
-categories = [{id: 1, name: "コーヒー"},
-{id: 2, name: "コーヒーコールド"},
-{id: 3, name: "エスプレッソ"},
-{id: 4, name: "ラテ"},
-{id: 5, name: "モカ"},
-{id: 6, name: "カプチーノ"},
-{id: 7, name: "カフェオレ"},
-{id: 8, name: "フロート"},
-{id: 9, name: "フラペチーノ"},
-{id: 10, name: "ティー"},
-{id: 11, name: "コーヒー豆"},
-{id: 12, name: "インスタントコーヒー"},
-{id: 13, name: "缶"},
-{id: 14, name: "その他"}
+categories = [{id: 1, name: "コーヒー(カフェ)"},
+{id: 2, name: "コーヒーコールド(カフェ)"},
+{id: 3, name: "エスプレッソ(カフェ)"},
+{id: 4, name: "ラテ(カフェ)"},
+{id: 5, name: "フラペチーノ(カフェ)"},
+{id: 6, name: "ティー(カフェ)"},
+{id: 7, name: "その他(カフェ)"},
+{id: 8, name: "コーヒー豆"},
+{id: 9, name: "インスタントコーヒー"},
+{id: 10, name: "缶"},
+{id: 11, name: "その他"}
 ]
 
 stores = [{id: 1, name: "スターバックスコーヒー"},
@@ -76,15 +80,16 @@ categories.each do |category|
 end
 
 
-# コーヒーjson読み込みからコーヒープロパティ生成-----------
-coffees = ActiveSupport::JSON.decode(File.read(Rails.root.join('db', 'coffee.json')))
+# スターバックス用json読み込みからコーヒープロパティ生成-----------
+coffees = ActiveSupport::JSON.decode(File.read(Rails.root.join('db', 'index.json')))
 coffees.each do |coffee|
-  CoffeeProperty.create!(
-    store_id: coffee["store_id"],
-    name: coffee["name"],
-    price: coffee["price"],
-    size: coffee["size"]
-  )
+  CoffeeProperty.find_or_create_by(register_code: coffee["product_code"]) do |cp|
+    cp.store_id = 1
+    cp.name = coffee["product_name"].gsub(/&\w*;/,'')
+    cp.price = coffee["price"]
+    cp.image = coffee["image1"]
+    cp.size = size_starbucks[coffee["size"]]
+  end
 end
 coffee_properties = CoffeeProperty.all
 coffee_properties.each do |property|
@@ -93,7 +98,7 @@ coffee_properties.each do |property|
     coffee.coffee_property_id = property.id
   end
 end
-# コーヒーjsonjson読み込みからコーヒープロパティ生成-----------
+# スターバックス用json読み込みからコーヒープロパティ生成-----------
 
 
 # レビューの生成------------------
@@ -102,7 +107,7 @@ users = users.map{|user|user.id}
 coffees = Coffee.all
 coffees = coffees.map{|coffee|coffee.id}
 
-1000.times{|n|
+10000.times{|n|
   Review.create!(
     user_id: users.sample,
     coffee_id: coffees.sample,

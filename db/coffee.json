@@ -1,0 +1,572 @@
+[
+  {
+    "store_id": "1",
+    "name": "さくら咲く抹茶フラペチーノ",
+    "price": "580",
+    "size": "short"
+  },
+  {
+    "store_id": "1",
+    "name": "スプリングラテ",
+    "price": "425",
+    "size": "short"
+  },
+  {
+    "store_id": "1",
+    "name": "さくらソイラテ",
+    "price": "550",
+    "size": "short"
+  },
+  {
+    "store_id": "1",
+    "name": "さくら咲くフラペチーノ",
+    "price": "690",
+    "size": "tall"
+  },
+  {
+    "store_id": "1",
+    "name": "アール グレイ ブーケ ティー ラテ",
+    "price": "480",
+    "size": "short"
+  },
+  {
+    "store_id": "1",
+    "name": "ハニー ウーロン ティー ラテ",
+    "price": "455",
+    "size": "short"
+  },
+  {
+    "store_id": "1",
+    "name": "ジョイフルメドレー",
+    "price": "430",
+    "size": "tall"
+  },
+  {
+    "store_id": "1",
+    "name": "ジョイフルメドレー ティー ラテ",
+    "price": "455",
+    "size": "short"
+  },
+  {
+    "store_id": "1",
+    "name": "My フルーツ フラペチーノ グレープ & ピーチ",
+    "price": "750",
+    "size": "tall"
+  },
+  {
+    "store_id": "1",
+    "name": "スターバックス ブロンド ラテ with オーツミルク",
+    "price": "455",
+    "size": "short"
+  },
+  {
+    "store_id": "1",
+    "name": "My フルーツ フラペチーノ マンゴー&パイナップル",
+    "price": "750",
+    "size": "tall"
+  },
+  {
+    "store_id": "1",
+    "name": "和三盆 ムース フォーム アーモンドミルク ラテ",
+    "price": "550",
+    "size": "tall"
+  },
+  {
+    "store_id": "1",
+    "name": "和三盆 アーモンドミルク フラペチーノ",
+    "price": "660",
+    "size": "tall"
+  },
+  {
+    "store_id": "1",
+    "name": "トリプルエスプレッソ ラテ",
+    "price": "510",
+    "size": "tall"
+  },
+  {
+    "store_id": "1",
+    "name": "My フルーツ フラペチーノ ストロベリー",
+    "price": "750",
+    "size": "tall"
+  },
+  {
+    "store_id": "1",
+    "name": "オーツミルク ラテ",
+    "price": "455",
+    "size": "tall"
+  },
+  {
+    "store_id": "1",
+    "name": "和三盆 ほうじ茶 フラペチーノ",
+    "price": "705",
+    "size": "tall"
+  },
+  {
+    "store_id": "1",
+    "name": "和三盆 抹茶 フラペチーノ",
+    "price": "750",
+    "size": "tall"
+  },
+  {
+    "store_id": "1",
+    "name": "ゆず & シトラス ラベンダー セージ ティー フラペチーノ",
+    "price": "750",
+    "size": "tall"
+  },
+  {
+    "store_id": "1",
+    "name": "スターバックス コーヒートラベラー",
+    "price": "3158",
+    "size": "-"
+  },
+  {
+    "store_id": "1",
+    "name": "アーモンドミルク ラテ",
+    "price": "415",
+    "size": "short"
+  },
+  {
+    "store_id": "1",
+    "name": "エスプレッソ アフォガート フラペチーノ",
+    "price": "590",
+    "size": "short"
+  },
+  {
+    "store_id": "1",
+    "name": "クランチー アーモンド チョコレート フラペチーノ",
+    "price": "620",
+    "size": "short"
+  },
+  {
+    "store_id": "1",
+    "name": "コールドブリュー コーヒー",
+    "price": "400",
+    "size": "short"
+  },
+  {
+    "store_id": "1",
+    "name": "ムース フォーム ラテ",
+    "price": "510",
+    "size": "tall"
+  },
+  {
+    "store_id": "1",
+    "name": "ポットサービス",
+    "price": "2648",
+    "size": "-"
+  },
+  {
+    "store_id": "1",
+    "name": "エスプレッソ",
+    "price": "350",
+    "size": "solo"
+  },
+  {
+    "store_id": "1",
+    "name": "エスプレッソ マキアート",
+    "price": "360",
+    "size": "solo"
+  },
+  {
+    "store_id": "1",
+    "name": "エスプレッソ コンパナ",
+    "price": "360",
+    "size": "solo"
+  },
+  {
+    "store_id": "1",
+    "name": "ダーク モカ チップ クリーム フラペチーノ",
+    "price": "525",
+    "size": "short"
+  },
+  {
+    "store_id": "1",
+    "name": "キッズ ココア",
+    "price": "200",
+    "size": "-"
+  },
+  {
+    "store_id": "1",
+    "name": "キッズ ミルク",
+    "price": "200",
+    "size": "-"
+  },
+  {
+    "store_id": "1",
+    "name": "ドリップ コーヒー",
+    "price": "350",
+    "size": "short"
+  },
+  {
+    "store_id": "1",
+    "name": "カフェアメリカーノ",
+    "price": "370",
+    "size": "short"
+  },
+  {
+    "store_id": "1",
+    "name": "ミルク",
+    "price": "410",
+    "size": "short"
+  },
+  {
+    "store_id": "1",
+    "name": "スターバックス ラテ",
+    "price": "415",
+    "size": "short"
+  },
+  {
+    "store_id": "1",
+    "name": "カプチーノ",
+    "price": "415",
+    "size": "short"
+  },
+  {
+    "store_id": "1",
+    "name": "ソイ ラテ",
+    "price": "415",
+    "size": "short"
+  },
+  {
+    "store_id": "1",
+    "name": "ココア",
+    "price": "435",
+    "size": "short"
+  },
+  {
+    "store_id": "1",
+    "name": "キャラメルクリーム",
+    "price": "475",
+    "size": "short"
+  },
+  {
+    "store_id": "1",
+    "name": "カフェ モカ",
+    "price": "455",
+    "size": "short"
+  },
+  {
+    "store_id": "1",
+    "name": "ホワイト モカ",
+    "price": "455",
+    "size": "short"
+  },
+  {
+    "store_id": "1",
+    "name": "キャラメル マキアート",
+    "price": "455",
+    "size": "short"
+  },
+  {
+    "store_id": "1",
+    "name": "コーヒー フラペチーノ",
+    "price": "460",
+    "size": "short"
+  },
+  {
+    "store_id": "1",
+    "name": "コーヒー プレス",
+    "price": "490",
+    "size": "short"
+  },
+  {
+    "store_id": "1",
+    "name": "キャラメル フラペチーノ",
+    "price": "510",
+    "size": "short"
+  },
+  {
+    "store_id": "1",
+    "name": "バニラ クリーム フラペチーノ",
+    "price": "510",
+    "size": "short"
+  },
+  {
+    "store_id": "1",
+    "name": "抹茶 クリーム フラペチーノ",
+    "price": "525",
+    "size": "short"
+  },
+  {
+    "store_id": "1",
+    "name": "ダーク モカ チップ フラペチーノ",
+    "price": "525",
+    "size": "short"
+  },
+  {
+    "store_id": "2",
+    "name": "ブレンドコーヒー",
+    "price": "250",
+    "size": "S"
+  },
+  {
+    "store_id": "2",
+    "name": "アメリカンコーヒー",
+    "price": "250",
+    "size": "S"
+  },
+  {
+    "store_id": "2",
+    "name": "カフェラテ",
+    "price": "340",
+    "size": "S"
+  },
+  {
+    "store_id": "2",
+    "name": "エスプレッソコーヒー",
+    "price": "250",
+    "size": "S"
+  },
+  {
+    "store_id": "2",
+    "name": "宇治抹茶ラテ",
+    "price": "430",
+    "size": "S"
+  },
+  {
+    "store_id": "3",
+    "name": "アイスコーヒー",
+    "price": "345",
+    "size": "short"
+  },
+  {
+    "store_id": "3",
+    "name": "カフェ アメリカーノ",
+    "price": "345",
+    "size": "short"
+  },
+  {
+    "store_id": "3",
+    "name": "カフェラテ",
+    "price": "415",
+    "size": "short"
+  },
+  {
+    "store_id": "3",
+    "name": "エスプレッソ",
+    "price": "345",
+    "size": "short"
+  },
+  {
+    "store_id": "3",
+    "name": "カフェ アメリカーノ",
+    "price": "345",
+    "size": "short"
+  },
+  {
+    "store_id": "3",
+    "name": "カプチーノ",
+    "price": "345",
+    "size": "short"
+  },
+  {
+    "store_id": "4",
+    "name": "コメダブレンド",
+    "price": "460",
+    "size": "-"
+  },
+  {
+    "store_id": "4",
+    "name": "アメリカン",
+    "price": "460",
+    "size": "-"
+  },
+  {
+    "store_id": "4",
+    "name": "ウインナーコーヒー",
+    "price": "540",
+    "size": "-"
+  },
+  {
+    "store_id": "4",
+    "name": "カフェオーレ",
+    "price": "480",
+    "size": "short"
+  },
+  {
+    "store_id": "4",
+    "name": "アイスコーヒー",
+    "price": "460",
+    "size": "short"
+  },
+  {
+    "store_id": "5",
+    "name": "星乃ブレンド",
+    "price": "450",
+    "size": "-"
+  },
+  {
+    "store_id": "5",
+    "name": "彦星ブレンド",
+    "price": "450",
+    "size": "-"
+  },
+  {
+    "store_id": "5",
+    "name": "織姫ブレンド",
+    "price": "450",
+    "size": "-"
+  },
+  {
+    "store_id": "5",
+    "name": "カフェ・オレ",
+    "price": "520",
+    "size": "-"
+  },
+  {
+    "store_id": "5",
+    "name": "ウインナー珈琲",
+    "price": "520",
+    "size": "-"
+  },
+  {
+    "store_id": "6",
+    "name": "サンマルクブレンド",
+    "price": "300",
+    "size": "S"
+  },
+  {
+    "store_id": "6",
+    "name": "アメリカンコーヒー",
+    "price": "300",
+    "size": "S"
+  },
+  {
+    "store_id": "6",
+    "name": "カフェラテ",
+    "price": "380",
+    "size": "S"
+  },
+  {
+    "store_id": "6",
+    "name": "キャラメルラテ",
+    "price": "440",
+    "size": "S"
+  },
+  {
+    "store_id": "6",
+    "name": "アイスコーヒー",
+    "price": "300",
+    "size": "S"
+  },
+  {
+    "store_id": "7",
+    "name": "ネルドリップブレンドコーヒー",
+    "price": "530",
+    "size": "R"
+  },
+  {
+    "store_id": "7",
+    "name": "アイスコーヒー",
+    "price": "550",
+    "size": "R"
+  },
+  {
+    "store_id": "7",
+    "name": "ウィンナーコーヒー",
+    "price": "620",
+    "size": "R"
+  },
+  {
+    "store_id": "7",
+    "name": "ミルク珈琲（黒糖）",
+    "price": "600",
+    "size": "R"
+  },
+  {
+    "store_id": "7",
+    "name": "生キャラメルミルク珈琲",
+    "price": "670",
+    "size": "R"
+  },
+  {
+    "store_id": "8",
+    "name": "コーヒー",
+    "price": "340",
+    "size": "S"
+  },
+  {
+    "store_id": "8",
+    "name": "カフェラテ",
+    "price": "400",
+    "size": "S"
+  },
+  {
+    "store_id": "8",
+    "name": "カフェモカ",
+    "price": "430",
+    "size": "S"
+  },
+  {
+    "store_id": "8",
+    "name": "カフェモカ",
+    "price": "430",
+    "size": "S"
+  },
+  {
+    "store_id": "8",
+    "name": "エスプレッソ",
+    "price": "340",
+    "size": "S"
+  },
+  {
+    "store_id": "9",
+    "name": "ブレンドコーヒー",
+    "price": "280",
+    "size": "R"
+  },
+  {
+    "store_id": "9",
+    "name": "アメリカンコーヒー",
+    "price": "280",
+    "size": "R"
+  },
+  {
+    "store_id": "9",
+    "name": "カフェオレ",
+    "price": "330",
+    "size": "R"
+  },
+  {
+    "store_id": "9",
+    "name": "エスプレッソ",
+    "price": "280",
+    "size": "R"
+  },
+  {
+    "store_id": "9",
+    "name": "カフェラテ",
+    "price": "350",
+    "size": "R"
+  },
+  {
+    "store_id": "10",
+    "name": "珈琲館ブレンド",
+    "price": "480",
+    "size": "-"
+  },
+  {
+    "store_id": "10",
+    "name": "蔭干し珈琲",
+    "price": "560",
+    "size": "-"
+  },
+  {
+    "store_id": "10",
+    "name": "炭火珈琲",
+    "price": "540",
+    "size": "-"
+  },
+  {
+    "store_id": "10",
+    "name": "完熟珈琲",
+    "price": "560",
+    "size": "-"
+  },
+  {
+    "store_id": "10",
+    "name": "マンデリンG-1",
+    "price": "620",
+    "size": "-"
+  }
+]
